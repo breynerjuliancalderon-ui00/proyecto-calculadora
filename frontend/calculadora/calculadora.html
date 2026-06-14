@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="csscal.css">
+</head>
+<body>
+
+    <!-- Barra superior -->
+    <div class="barra-top">
+        <button id="historial_cal" class="btn-top btn-historial">📋 Historial</button>
+        <button class="btn-top btn-volver" onclick="window.location.href='../bienvenida.html'">← Volver</button>
+    </div>
+
+    <!-- Panel de historial (oculto por defecto) -->
+    <div id="panel-historial">
+        <h3>📋 Historial de Operaciones</h3>
+        <table id="tabla-historial">
+            <thead>
+                <tr>
+                    <th>Operación</th>
+                    <th>Resultado</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <p id="sin-historial" style="display:none;">Aún no hay operaciones guardadas.</p>
+    </div>
+
+    <!-- Calculadora -->
+    <div class="calc-wrapper">
+        <!-- Pantalla -->
+        <div class="pantalla-wrapper">
+            <div id="expresion"></div>
+            <input type="text" id="pantalla" placeholder="0" readonly>
+        </div>
+
+        <!-- Botones -->
+        <div class="grid-botones">
+            <!-- Fila 1 -->
+            <button class="btn btn-fn" data-funcion="sin">sin</button>
+            <button class="btn btn-fn" data-funcion="cos">cos</button>
+            <button class="btn btn-fn" data-funcion="tan">tan</button>
+            <button class="btn btn-fn" data-funcion="log">log</button>
+
+            <!-- Fila 2 -->
+            <button class="btn btn-fn" data-funcion="raiz">√</button>
+            <button class="btn btn-fn" data-valor="**">xʸ</button>
+            <button class="btn btn-fn" data-funcion="ln">ln</button>
+            <button class="btn btn-fn" data-valor="3.141592653589793">π</button>
+
+            <!-- Fila 3 -->
+            <button class="btn btn-sys" data-valor="(">(</button>
+            <button class="btn btn-sys" data-valor=")">)</button>
+            <button class="btn btn-del" data-control="delete">⌫</button>
+            <button class="btn btn-clear" data-control="clear">C</button>
+
+            <!-- Fila 4 -->
+            <button class="btn btn-num" data-valor="7">7</button>
+            <button class="btn btn-num" data-valor="8">8</button>
+            <button class="btn btn-num" data-valor="9">9</button>
+            <button class="btn btn-op" data-valor="/">÷</button>
+
+            <!-- Fila 5 -->
+            <button class="btn btn-num" data-valor="4">4</button>
+            <button class="btn btn-num" data-valor="5">5</button>
+            <button class="btn btn-num" data-valor="6">6</button>
+            <button class="btn btn-op" data-valor="*">×</button>
+
+            <!-- Fila 6 -->
+            <button class="btn btn-num" data-valor="1">1</button>
+            <button class="btn btn-num" data-valor="2">2</button>
+            <button class="btn btn-num" data-valor="3">3</button>
+            <button class="btn btn-op" data-valor="-">−</button>
+
+            <!-- Fila 7 -->
+            <button class="btn btn-num" data-valor="0">0</button>
+            <button class="btn btn-num" data-valor=".">.</button>
+            <button class="btn btn-sys" data-funcion="ans">Ans</button>
+            <button class="btn btn-op" data-valor="+">+</button>
+
+            <!-- Igual (ocupa toda la fila) -->
+            <button class="btn btn-igual" data-control="igual">=</button>
+        </div>
+    </div>
+
+    <script src="calculadora.js"></script>
+</body>
+</html>

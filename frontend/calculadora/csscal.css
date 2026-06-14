@@ -1,0 +1,303 @@
+/* ============================================================
+   CALCULADORA — Estilo Neon Glassmorphism
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #0a0a1a;
+    background-image:
+        radial-gradient(ellipse at 20% 20%, rgba(0, 255, 136, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(0, 180, 255, 0.08) 0%, transparent 50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.2rem 1rem 2rem;
+    font-family: 'Share Tech Mono', monospace;
+    color: #e0e0e0;
+}
+
+/* ---- Barra superior ---- */
+.barra-top {
+    display: flex;
+    gap: 0.8rem;
+    width: 100%;
+    max-width: 380px;
+    margin-bottom: 1rem;
+}
+
+.btn-top {
+    flex: 1;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+}
+
+.btn-historial {
+    background: rgba(0, 255, 136, 0.1);
+    color: #00ff88;
+    border: 1px solid rgba(0, 255, 136, 0.3);
+}
+.btn-historial:hover {
+    background: rgba(0, 255, 136, 0.2);
+    box-shadow: 0 0 12px rgba(0, 255, 136, 0.4);
+}
+
+.btn-volver {
+    background: rgba(255, 255, 255, 0.05);
+    color: #a0a0b0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.btn-volver:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+/* ---- Panel de historial ---- */
+#panel-historial {
+    display: none;
+    width: 100%;
+    max-width: 380px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    border-radius: 14px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    backdrop-filter: blur(10px);
+}
+
+#panel-historial h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    color: #00ff88;
+    text-align: center;
+    margin-bottom: 0.8rem;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
+}
+
+#tabla-historial {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+}
+
+#tabla-historial th {
+    background: rgba(0, 255, 136, 0.08);
+    color: #00ff88;
+    padding: 6px 8px;
+    border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+    text-align: left;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+#tabla-historial td {
+    padding: 6px 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #c0c0d0;
+    font-size: 0.78rem;
+}
+
+#tabla-historial tr:hover td {
+    background: rgba(0, 255, 136, 0.04);
+}
+
+#sin-historial {
+    text-align: center;
+    color: #606070;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+/* ---- Cuerpo de la calculadora ---- */
+.calc-wrapper {
+    width: 100%;
+    max-width: 380px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(0, 180, 255, 0.2);
+    border-radius: 20px;
+    padding: 1.2rem;
+    backdrop-filter: blur(20px);
+    box-shadow:
+        0 0 40px rgba(0, 180, 255, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* ---- Pantalla ---- */
+.pantalla-wrapper {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 255, 136, 0.15);
+    border-radius: 12px;
+    padding: 0.8rem 1rem;
+    margin-bottom: 1rem;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+#expresion {
+    font-size: 0.75rem;
+    color: #505070;
+    text-align: right;
+    min-height: 18px;
+    margin-bottom: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#pantalla {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #00ff88;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: right;
+    width: 100%;
+    text-shadow: 0 0 15px rgba(0, 255, 136, 0.7);
+    letter-spacing: 2px;
+}
+
+#pantalla::placeholder {
+    color: rgba(0, 255, 136, 0.2);
+}
+
+#pantalla.error {
+    color: #ff4466;
+    text-shadow: 0 0 15px rgba(255, 68, 102, 0.7);
+}
+
+/* ---- Grid de botones ---- */
+.grid-botones {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.btn {
+    height: 52px;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+}
+
+.btn:active {
+    transform: scale(0.93);
+}
+
+/* Números */
+.btn-num {
+    background: rgba(255, 255, 255, 0.07);
+    color: #e0e0f0;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.btn-num:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+}
+
+/* Funciones científicas */
+.btn-fn {
+    background: rgba(0, 180, 255, 0.08);
+    color: #00b4ff;
+    border: 1px solid rgba(0, 180, 255, 0.2);
+    font-size: 0.85rem;
+}
+.btn-fn:hover {
+    background: rgba(0, 180, 255, 0.18);
+    box-shadow: 0 0 10px rgba(0, 180, 255, 0.3);
+}
+
+/* Sistema (paréntesis, Ans) */
+.btn-sys {
+    background: rgba(180, 130, 255, 0.08);
+    color: #b482ff;
+    border: 1px solid rgba(180, 130, 255, 0.2);
+}
+.btn-sys:hover {
+    background: rgba(180, 130, 255, 0.18);
+    box-shadow: 0 0 10px rgba(180, 130, 255, 0.3);
+}
+
+/* Operadores */
+.btn-op {
+    background: rgba(255, 160, 0, 0.1);
+    color: #ffa000;
+    border: 1px solid rgba(255, 160, 0, 0.25);
+    font-size: 1.2rem;
+}
+.btn-op:hover {
+    background: rgba(255, 160, 0, 0.22);
+    box-shadow: 0 0 10px rgba(255, 160, 0, 0.35);
+}
+
+/* DEL */
+.btn-del {
+    background: rgba(255, 100, 50, 0.1);
+    color: #ff6432;
+    border: 1px solid rgba(255, 100, 50, 0.25);
+    font-size: 1.1rem;
+}
+.btn-del:hover {
+    background: rgba(255, 100, 50, 0.22);
+    box-shadow: 0 0 10px rgba(255, 100, 50, 0.35);
+}
+
+/* C */
+.btn-clear {
+    background: rgba(255, 50, 80, 0.12);
+    color: #ff3250;
+    border: 1px solid rgba(255, 50, 80, 0.3);
+}
+.btn-clear:hover {
+    background: rgba(255, 50, 80, 0.25);
+    box-shadow: 0 0 10px rgba(255, 50, 80, 0.4);
+}
+
+/* IGUAL */
+.btn-igual {
+    grid-column: span 4;
+    height: 54px;
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 200, 100, 0.3));
+    color: #00ff88;
+    border: 1px solid rgba(0, 255, 136, 0.4);
+    font-size: 1.4rem;
+    border-radius: 12px;
+    text-shadow: 0 0 12px rgba(0, 255, 136, 0.8);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.15);
+}
+.btn-igual:hover {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.35), rgba(0, 200, 100, 0.45));
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.35);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 400px) {
+    .btn { height: 46px; font-size: 0.9rem; }
+    #pantalla { font-size: 1.6rem; }
+}

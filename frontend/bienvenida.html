@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido — SENA</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <main class="contenedor">
+        <div class="tarjeta">
+            <h1>¡Bienvenido!</h1>
+            <p id="saludo" class="subtitulo">Sesión iniciada correctamente</p>
+
+            <a href="calculadora/calculadora.html" class="btn-principal"
+               style="display:inline-block; text-decoration:none; margin-top:1rem;">
+               🧮 Calculadora
+            </a>
+
+            <a href="listado.html" class="btn-principal"
+               style="display:inline-block; text-decoration:none; margin-top:1rem;">
+               Ver usuarios
+            </a>
+
+            <a href="index.html" onclick="sessionStorage.clear()" class="btn-principal"
+               style="display:inline-block; text-decoration:none; margin-top:1rem;">
+               Cerrar sesión
+            </a>
+        </div>
+    </main>
+
+    <script>
+        const usuario = JSON.parse(sessionStorage.getItem('usuario'));
+        if (usuario) {
+            document.getElementById('saludo').textContent =
+                'Hola ' + usuario.nombre + ', bienvenido al sistema.';
+        } else {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

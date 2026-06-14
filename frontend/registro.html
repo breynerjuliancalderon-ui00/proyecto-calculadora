@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro - SENA</title>
+  <link rel="stylesheet" href="./css/estilos.css">
+</head>
+<body>
+  <main class="contenedor">
+    <div class="tarjeta">
+
+      <h1>Crear Cuenta</h1>
+      <p class="subtitulo">Complete sus datos para registrarse</p>
+
+        <form id="formRegistro">
+
+            <div class="campo">
+
+              <label for="nombre">Nombre completo</label>
+              <input type="text" id="nombre" name="nombre" required placeholder="Juan Pérez">
+
+            </div>
+
+            <div class="campo">
+
+              <label for="email">Correo electrónico</label>
+              <input type="email" id="email" name="email" required placeholder="ejemplo@correo.com">
+
+            </div>
+            
+            <div class="campo">
+         <label for="telefono">Teléfono</label>
+        <input type="tel" id="telefono" name="telefono" required placeholder="ejem:3159959845">
+            </div>
+            <div class="campo">
+
+              <label for="password">Contraseña</label>
+              <input type="password" id="password" name="password" required minlength="4" placeholder="Minimo 4 caracteres">
+
+            </div>
+
+            <button type="submit" class="btn-principal">Registrarme</button>
+
+            <div id="mensaje" class="mensaje"></div>
+
+        </form> 
+
+        <p class="enlace">
+
+        ¿Ya tiene una cuenta?
+        <a href="index.html">Inicie sesión</a>
+
+        </p>
+
+    </div>
+  </main>
+  <script src="./js/registro.js"></script>
+</body>
+</html>
